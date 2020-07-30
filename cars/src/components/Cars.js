@@ -2,14 +2,14 @@ import React from 'react';
 
 const Cars = (props) => {
     console.log(props);
-    const colorinfo = (props.color)? (<p>Couleur: { props.color } </p>) : (<p>Couleur: Néant </p>);
-    const anneeInfo = ( props.year )? (<p>Année: {props.year}</p>) : null; 
+    const colorinfo = (props.color)? (`Couleur: ${ props.color }`) : ('Couleur: Néant');
+    const anneeInfo = ( props.year )? (`Année: ${props.year}`) : null; 
     return (
-        <div  style = { { backgroundColor: props.color, padding:'10px', margin: '5px auto', width: '250px' } }>
-            <p>Marque: { props.nom } </p>
-            {anneeInfo}
-            {colorinfo}
-        </div>
+        <tr>
+            <td>Marque: { props.nom } </td>
+            <td>{colorinfo}</td>
+            <td>{anneeInfo}</td>
+        </tr>
     )
 }
 

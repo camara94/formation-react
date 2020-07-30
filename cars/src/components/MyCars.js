@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Cars from './Cars';
 
 class MyCars extends Component {
@@ -22,20 +22,27 @@ class MyCars extends Component {
 
         let lesCards = this.state.voitures.map( (voiture, index) => {
             return (
-                <div key={index}>
+                <Fragment key={index}>
                    <Cars color={voiture.color}
                    year={ 
                     ((year - voiture.year) > 1)? (year - voiture.year) + ' ans' : (year - voiture.year) + ' an'}
                     nom={voiture.nom}
                     />
-                </div>
+                </Fragment>
             );
         });
         return (
-            <div>
+            <>
                 <h1> {this.props.title} </h1>
-                {lesCards}
-            </div>
+                <table className="carsTable">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Couleur</th>
+                        <th>Année</th>
+                    </tr>
+                    {lesCards}
+                </table>
+            </>
         );
     }
 }

@@ -17,3 +17,24 @@ code {
   font-weight: bold;
   color: blueviolet;
 }
+
+
+.carsTable td, .carsTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 33%;
+  text-align: center;
+}
+
+.carsTable tr:hover { background-color: #dddddd; }
+
+.carsTable th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgb(24, 99, 160);
+  color: #ffffff;
+}
+
+table {
+  margin: 0px auto;
+}
