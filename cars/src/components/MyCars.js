@@ -3,26 +3,38 @@ import Cars from './Cars';
 
 class MyCars extends Component {
 
-   noCopy = () => alert('Merci de ne pas copier ce text !!');
-
-   makeChange = (e) => {
-       if ( e.target.classList.contains('styled') ) {
-           e.target.classList.remove('styled');
-       } else {
-           e.target.classList.add('styled');
-       }
+   state = {
+       voitures: [
+           { nom:'Ford', color: 'lightgray', year: 2017 },
+           { nom:'Mercedes', color: 'lightgreen', year: 2011 },
+           { nom:'Peugeot', color: 'lightblue', year: 2009 },
+           { nom:'Renault 19', color: 'lightpink', year: 2014 }
+       ]
    }
 
+   getAnnee = (year) => {
+       return (year > 1)? ' ans' : ' an';
+   }
+   
     render() {
+
+        let year = new Date().getFullYear();
+
+        let lesCards = this.state.voitures.map( (voiture, index) => {
+            return (
+                <div key={index}>
+                   <Cars color={voiture.color}
+                   year={ 
+                    ((year - voiture.year) > 1)? (year - voiture.year) + ' ans' : (year - voiture.year) + ' an'}
+                    nom={voiture.nom}
+                    />
+                </div>
+            );
+        });
         return (
             <div>
-                <h1 onMouseEnter={this.makeChange}> {this.props.title} </h1>
-                <p onCopy={this.noCopy} style={{ width: '400px', margin: '5px auto' }}>Je n'ai pas reçu l'email d'activation
-                Si après 12h de la création de votre compte, vous n'avez toujours pas reçu votre email, cela veut dire que vous vous êtes trompé de votre adresse email, 
-                il faut refaire votre compte de nouveau en faisant attention à saisir votre adresse email.</p>
-                <Cars color='red'> Ford </Cars>
-                <Cars color='green'> Mercedes </Cars>
-                <Cars > Peugeot </Cars>
+                <h1> {this.props.title} </h1>
+                {lesCards}
             </div>
         );
     }
