@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.styled {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: blueviolet;
+}
