@@ -15,6 +15,14 @@ class MyCars extends Component {
    getAnnee = (year) => {
        return (year > 1)? ' ans' : ' an';
    }
+
+   plusdixans = () => {
+      const updateValues = this.state.voitures.map((v) => {
+          return v.year -= 10;
+       })
+
+       this.setState({ updateValues });
+   } 
    
     render() {
 
@@ -34,6 +42,7 @@ class MyCars extends Component {
         return (
             <>
                 <h1> {this.props.title} </h1>
+                <button onClick={this.plusdixans}> + 10 ans </button>
                 <table className="carsTable">
                     <tr>
                         <th>Nom</th>
